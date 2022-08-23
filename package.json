@@ -1,0 +1,12 @@
+{
+  "name": "bowlinggamekata",
+  "version": "1.0.0",
+  "description": "A simple Javascriopt version of the Bowling Ball Game Kata",
+  "main": "bowlingball-game.js",
+  "scripts": {
+    "test": "jasmine"
+  },
+  "devDependencies": {
+    "jasmine": "^4.3.0"
+  }
+}
