@@ -12,29 +12,40 @@ class BowlingGame {
         return this.rolls[frameIndex] + this.rolls[frameIndex + 1] == 10
     }
 
-    spareBonus(frameIndex) {
-        return this.rolls[frameIndex + 2]
-    }
-
-    calculateStandardFrameScore(frameIndex) {
-        return this.rolls[frameIndex] + this.rolls[frameIndex + 1]
+    isStrike(frameIndex) {
+        return this.rolls[frameIndex] == 10
     }
 
     get score() {
         let score = 0
         let frameIndex = 0
         for(let frame=0; frame < 10;frame++) {
-            if (this.isSpare(frameIndex)) {
-                 score += this.calculateStandardFrameScore(frameIndex) +
-                          this.spareBonus(frameIndex)
-             } else {
-                 score += this.calculateStandardFrameScore(frameIndex);
-             }
-             frameIndex += 2;
+            if (this.isStrike(frameIndex)) {
+               score = score +  10 + this.strikeBonus(frameIndex);
+               frameIndex++;
+            } else if (this.isSpare(frameIndex)) {
+                score = score + 10 + this.spareBonus(frameIndex);
+                frameIndex += 2;
+            } else {
+                score = score + this.sumOfBallsInFrame(frameIndex);
+                frameIndex += 2;
+            }
         }
         return score
     }
 
+    strikeBonus(frameIndex) {
+        return this.rolls[frameIndex+1] + this.rolls[frameIndex+2];
+    }
+
+    spareBonus(frameIndex) {
+        return this.rolls[frameIndex + 2]
+    }
+
+    sumOfBallsInFrame(frameIndex) {
+        return this.rolls[frameIndex] + this.rolls[frameIndex + 1];
+    }
+
 }
 
-module.exports = BowlingGame
+module.exports = BowlingGame;
