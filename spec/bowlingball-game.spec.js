@@ -34,7 +34,7 @@ describe("Spare games", () => {
   });
 });
 
-describe("Spare games", () => {
+describe("Strike games", () => {
   it("A game with a strike in first frame and zeros should score 24", () => {
     rollStrike();
     game.roll(3);
