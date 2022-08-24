@@ -34,6 +34,25 @@ describe("Spare games", () => {
   });
 });
 
+describe("Spare games", () => {
+  it("A game with a strike in first frame and zeros should score 24", () => {
+    rollStrike();
+    game.roll(3);
+    game.roll(4);
+    rollMany(16, 0);
+    expect(game.score).toEqual(24);
+  });
+
+  it("A perfect game has 12 strikes - should equal 300", () => {
+    rollMany(12, 10);
+    expect(game.score).toEqual(300);
+  });
+});
+
+function rollStrike() {
+  game.roll(10);
+}
+
 function rollMany(rolls, pins) {
   for (let i = 0; i < rolls; i++) {
     game.roll(pins);
