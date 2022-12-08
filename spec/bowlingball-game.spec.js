@@ -7,18 +7,18 @@ beforeEach(() => {
   game = new BowlingGame(); //create new game
 });
 
-describe("simple games", () => {
-  it("A game with no scores for any roll should equal zero", () => {
+describe("A simple game with", () => {
+  it("no scores for any roll should equal zero", () => {
     rollMany(MAX_NUMBER_OF_ROLLS_BASIC_GAME, 0);
     expect(game.score).toEqual(0);
   });
 
-  it("A game with score 1 for each roll should equal 20", () => {
+  it("score 1 for each roll should equal 20", () => {
     rollMany(MAX_NUMBER_OF_ROLLS_BASIC_GAME, 1);
     expect(game.score).toEqual(20);
   });
 
-  it("A game with score 2 for each roll should equal 40", () => {
+  it("score 2 for each roll should equal 40", () => {
     rollMany(MAX_NUMBER_OF_ROLLS_BASIC_GAME, 2);
     expect(game.score).toEqual(40);
   });
@@ -34,8 +34,8 @@ describe("Spare games", () => {
   });
 });
 
-describe("Strike games", () => {
-  it("A game with a strike in first frame and zeros should score 24", () => {
+describe("A game with a", () => {
+  it("strike in first frame and zeros should score 24", () => {
     rollStrike();
     game.roll(3);
     game.roll(4);
@@ -43,7 +43,7 @@ describe("Strike games", () => {
     expect(game.score).toEqual(24);
   });
 
-  it("A perfect game has 12 strikes - should equal 300", () => {
+  it("perfect set of 12 strikes - should equal 300", () => {
     rollMany(12, 10);
     expect(game.score).toEqual(300);
   });
